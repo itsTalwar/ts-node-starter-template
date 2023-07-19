@@ -1,0 +1,43 @@
+# For reference: https://github.com/devrev/snap-in-docs/blob/main/references/manifest.md.
+# Refactor the code based on your business logic.
+
+version: "1"
+
+# This is the name displayed in DevRev where the Snap-In takes actions using the token of this service account.
+service_account:
+  display_name: DevRev Bot
+
+# Add any external connection, reference: https://github.com/devrev/snap-in-docs/blob/main/references/connections.md.
+
+# Add global values, reference: https://github.com/devrev/snap-in-docs/blob/main/references/manifest.md#globals.
+#globals:
+#  - name: sample_value
+#    description: Sample global value
+#    devrev_field_type: text
+#    is_required: true
+#    default_value: "primary"
+#    ui:
+#      display_name: Sample Value
+
+# Event source reference: https://github.com/devrev/snap-in-docs/blob/main/references/event_sources.md.
+event-sources:
+  - name: devrev-event-source
+    description: Event source listening on DevRev events.
+    display_name: DevRev events listener
+    type: devrev-webhook
+    config:
+      event_types:
+        - work_created
+
+# Functions reference: https://github.com/devrev/snap-in-docs/blob/main/references/functions.md.
+functions:
+  - name: on_work_creation
+    description: function to trigger on work creation
+
+# Automations reference: https://github.com/devrev/snap-in-docs/blob/main/references/event_sources.md.
+automations:
+  - name: handle-work-created-event
+    source: devrev-event-source
+    event_types:
+      - work_created
+    function: on_work_creation
