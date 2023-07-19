@@ -1,5 +1,5 @@
 {
-  "name": "devrev-snaps-typescript-template",
+  "name": "ts-node-starter-template",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -17,7 +17,7 @@
     "test:watch": "jest --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "@itsTalwar",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.20.12",
